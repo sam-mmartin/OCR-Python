@@ -45,6 +45,11 @@ def color_invert(img):
     return 255 - img
 
 
+def redimension(img, w, h):
+    print("Redimensionamento de imagem")
+    return cv2.resize(img, (w, h))
+
+
 def min_redimension(img, ratio):
     print("Redimensionamento menor")
     return cv2.resize(

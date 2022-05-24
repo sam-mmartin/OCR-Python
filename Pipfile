@@ -9,6 +9,7 @@ pytesseract = "*"
 numpy = "*"
 opencv-python = "*"
 matplotlib = "*"
+imutils = "*"
 
 [dev-packages]
 autopep8 = "*"
