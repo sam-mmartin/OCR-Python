@@ -1,23 +1,17 @@
-import cv2
-import numpy as np
+import ocr_module as mod
 
+list = "Projetos-Python", "OCR", "img", "Test2.jpg"
+path_img = mod.filepath(list)
+print(path_img)
 
-def view_image(img):
-    cv2.imshow("sample", img)
-    cv2.waitKey(2000)
+img = mod.read_image(path_img)
+mod.view_image(img)
 
+img = mod.gray_escale(img)
+mod.view_image(img)
 
-def gray_escale(img):
-    return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+maior = mod.max_redimension(img, 1.5)
+mod.view_image(maior)
 
-
-#img = cv2.imread('C:\\Users\\samc3\\Pictures\\teste03.png')
-img = cv2.imread('C:\\Users\\samc3\\Pictures\\Test2.jpg')
-view_image(img)
-img = gray_escale(img)
-
-maior = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
-view_image(maior)
-
-menor = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-view_image(menor)
+menor = mod.min_redimension(img, 0.5)
+mod.view_image(menor)

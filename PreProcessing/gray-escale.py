@@ -1,14 +1,11 @@
-import cv2
-import numpy as np
+import ocr_module as mod
 
+list = "Projetos-Python", "OCR", "img", "teste03.png"
+path_img = mod.filepath(list)
+print(path_img)
 
-def view_image(img):
-    cv2.imshow("sample", img)
-    cv2.waitKey(2000)
+img = mod.read_image(path_img)
+mod.view_image(img)
 
-
-img = cv2.imread('C:\\Users\\samc3\\Pictures\\teste03.png')
-view_image(img)
-
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-view_image(img)
+gray = mod.gray_escale(img)
+mod.view_image(img)
