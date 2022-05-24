@@ -1,12 +1,17 @@
-import pytesseract
-import numpy as np
-import cv2
+import ocr_module as mod
 
 config_tesseract = '--tessdata-dir tessdata --psm 6'
+
 # Ler a imagem
-img = cv2.imread('C:\\Users\\samc3\\Pictures\\Test2.jpg')
+list = "Projetos-Python", "OCR", "img", "Test2.jpg"
+path_img = mod.filepath(list)
+
+img = mod.read_image(path_img)
+mod.view_image(img)
+
 # Converte para padrão RGB
-rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+rgb = mod.convert_to_rgb(img)
+
 # Extrai o texto de uma imagem
-texto = pytesseract.image_to_string(rgb, lang="por", config=config_tesseract)
+texto = mod.extract_text(rgb)
 print(texto)
