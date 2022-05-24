@@ -1,9 +1,8 @@
 from pathlib import Path
-import Recog.recog_module as mod
+import recog_module as mod
 
-home = Path.home()
-path_img = str(Path(home, "Projetos-Python", "OCR", "img", "Test3.png"))
-print(home)
+list = "Projetos-Python", "OCR", "img", "Test3.png"
+path_img = mod.filepath(list)
 print(path_img)
 
 config = 'tessdata-dir tessdata'
@@ -17,3 +16,8 @@ mod.view_image(gray)
 val, thresh = mod.otsu_thresholding(gray)
 mod.view_image(thresh)
 print("Threshold:", val)
+
+inv = mod.invert(thresh)
+mod.view_image(inv)
+
+mod.ocr(inv, "por", config)
